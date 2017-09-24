@@ -52,17 +52,18 @@ public class Control : MonoBehaviour {
 
     private void HandleMovement(float horizontal) // The horizontal in the parenthesis gets its value from the float Horizontal = blah blah in the fixed update
     {
-        if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")&& !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crouch")) // to stop character from moving when attacking
+        if ( !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crouch")) // to stop character from moving when attacking
         {
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y); // declaring verctor 2 means you have to put (x,y) values in the parenthesis
         }
         if (isGrounded && jump)
         {
+            myAnimator.SetBool("Jump",true);
             isGrounded = false; //isGrounded to false while jumping
             myRigidbody.AddForce(new Vector2(0, jumpForce));
-            Debug.Log("jump function executed");
+            
         }
-        if (slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide")&& !isGrounded)
+        if (slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide") &&!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
         {
             myAnimator.SetBool("Slide", true); //tells unity that the slide box in animator is checked.
             myAnimator.SetBool("Crouch", true);
@@ -78,7 +79,7 @@ public class Control : MonoBehaviour {
 
     private void HandleAttacks()
     {
-        if (attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // to check if attack animation is pressed AND character is not attacking at the moment
+        if (attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // to check if attack animation is pressed AND if Character is Grounded AND character is not attacking at the moment
         {
             myAnimator.SetTrigger("Attack");
             myRigidbody.velocity = Vector2.zero; //keep character from moving when attacking
