@@ -39,7 +39,7 @@ public class Control : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal"); // "HORIZONTAL" is the name of a unity feature for movement control. You can see it in Edit>Project Settings>Input.
+        float horizontal = Input.GetAxis("Horizontal_P1"); // "HORIZONTAL" is the name of a unity feature for movement control. You can see it in Edit>Project Settings>Input.
         isGrounded = IsGrounded();
         HandleMovement(horizontal);
         Flip(horizontal);
@@ -52,7 +52,7 @@ public class Control : MonoBehaviour {
 
     private void HandleMovement(float horizontal) // The horizontal in the parenthesis gets its value from the float Horizontal = blah blah in the fixed update
     {
-        if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // to stop character from moving when attacking
+        if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")&& !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crouch")) // to stop character from moving when attacking
         {
             myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y); // declaring verctor 2 means you have to put (x,y) values in the parenthesis
         }
@@ -62,7 +62,7 @@ public class Control : MonoBehaviour {
             myRigidbody.AddForce(new Vector2(0, jumpForce));
             Debug.Log("jump function executed");
         }
-        if (slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
+        if (slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide")&& !isGrounded)
         {
             myAnimator.SetBool("Slide", true); //tells unity that the slide box in animator is checked.
             myAnimator.SetBool("Crouch", true);
@@ -73,45 +73,42 @@ public class Control : MonoBehaviour {
             myAnimator.SetBool("Crouch", false);
 
         }
-        myAnimator.SetFloat("speed", Mathf.Abs(horizontal)); //to check if character is moving. For use in walk animation
+        myAnimator.SetFloat("Speed", Mathf.Abs(horizontal)); //to check if character is moving. For use in walk animation
     }
 
     private void HandleAttacks()
     {
         if (attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // to check if attack animation is pressed AND character is not attacking at the moment
         {
-            myAnimator.SetTrigger("attack");
+            myAnimator.SetTrigger("Attack");
             myRigidbody.velocity = Vector2.zero; //keep character from moving when attacking
             Debug.Log("Attack function executed");
         }
 
         if (attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // to check if attack animation is pressed AND character is not attacking at the moment
         {
-            myAnimator.SetTrigger("attack");
+            myAnimator.SetTrigger("Attack");
             myRigidbody.velocity = Vector2.zero; //keep character from moving when attacking
             Debug.Log("Attack function executed");
         }
     }
     private void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.X))
         {
             jump = true;
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             attack = true;
         }
 
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.C))
         {
             slide = true;
             crouch = true;
         }
-        if (Input.GetKeyDown(hit))
-        {
-            attack = true;
-        }
+       
 
     }
     private void Flip(float horizontal)
