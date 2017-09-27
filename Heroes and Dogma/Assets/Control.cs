@@ -19,6 +19,7 @@ public class Control : MonoBehaviour {
     }
 
     private Animator myAnimator;
+    public Transform knifePos;
     public float movementSpeed;
     private bool facingRight;
     public Transform[] groundPoints; //points on the characters shoes for him to know if he is standing on solid ground
@@ -28,6 +29,7 @@ public class Control : MonoBehaviour {
 
     
     public bool airControl;
+    public GameObject knifePrefab;
     public float jumpForce;
     public Rigidbody2D MyRigidbody { get; set; }
     public bool Attack { get; set; }
@@ -145,5 +147,21 @@ public class Control : MonoBehaviour {
         }
         return false;
     }
+    public void ThrowKnife (int value)
+    {
+       
+
+        if (facingRight)
+        {
+            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+            tmp.GetComponent<Knife>().Initialize(Vector2.right);
+        }
+        else
+        {
+            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
+            tmp.GetComponent<Knife>().Initialize(Vector2.left);
+        }
+    }
+    
 }
 
