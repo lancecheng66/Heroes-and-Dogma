@@ -4,31 +4,46 @@ using UnityEngine;
 
 
 public class Control : MonoBehaviour {
-    private Rigidbody2D myRigidbody;
+
+    private static Control instance;
+    public static Control Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<Control>();
+            }
+        return instance;
+        }
+    }
+
     private Animator myAnimator;
     public float movementSpeed;
-    private bool attack;
-    private bool slide;
-    private bool crouch;
     private bool facingRight;
     public Transform[] groundPoints; //points on the characters shoes for him to know if he is standing on solid ground
     public float groundRadius;
   
     public LayerMask whatIsGround;
-    private bool isGrounded;
-    private bool jump;
-    public bool airCOntrol;
-    public float jumpForce;
 
-    //controls
-    public KeyCode hit;
+    
+    public bool airControl;
+    public float jumpForce;
+    public Rigidbody2D MyRigidbody { get; set; }
+    public bool Attack { get; set; }
+    public bool Slide { get; set; }
+    public bool Jump { get; set; }
+    public bool OnGround { get; set; }
+    public bool Crouch { get; set; }
+
+
 
 
     // Use this for initialization
     void Start()
     {
         facingRight = true;
-        myRigidbody = GetComponent<Rigidbody2D>();
+        MyRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
     }
     private void Update()
@@ -40,11 +55,10 @@ public class Control : MonoBehaviour {
     void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal_P1"); // "HORIZONTAL" is the name of a unity feature for movement control. You can see it in Edit>Project Settings>Input.
-        isGrounded = IsGrounded();
+        OnGround = IsGrounded();
         HandleMovement(horizontal);
         Flip(horizontal);
-        HandleAttacks();
-        ResetValues();
+       
     }
 
 
@@ -52,64 +66,50 @@ public class Control : MonoBehaviour {
 
     private void HandleMovement(float horizontal) // The horizontal in the parenthesis gets its value from the float Horizontal = blah blah in the fixed update
     {
-        if ( !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Crouch")) // to stop character from moving when attacking
+       
+        if(!Attack && (OnGround||airControl))
         {
-            myRigidbody.velocity = new Vector2(horizontal * movementSpeed, myRigidbody.velocity.y); // declaring verctor 2 means you have to put (x,y) values in the parenthesis
+            MyRigidbody.velocity = new Vector2(horizontal * movementSpeed, MyRigidbody.velocity.y);
         }
-        if (isGrounded && jump)
-        {
-            myAnimator.SetBool("Jump",true);
-            isGrounded = false; //isGrounded to false while jumping
-            myRigidbody.AddForce(new Vector2(0, jumpForce));
-            
-        }
-        if (slide && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide") &&!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Jump"))
-        {
-            myAnimator.SetBool("Slide", true); //tells unity that the slide box in animator is checked.
-            myAnimator.SetBool("Crouch", true);
-        }
-        else if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Slide"))
-        {
-            myAnimator.SetBool("Slide", false);
-            myAnimator.SetBool("Crouch", false);
 
+        if (Jump && MyRigidbody.velocity.y==0)
+        {
+            MyRigidbody.AddForce(new Vector2(horizontal * movementSpeed, jumpForce));
         }
-        myAnimator.SetFloat("Speed", Mathf.Abs(horizontal)); //to check if character is moving. For use in walk animation
+        myAnimator.SetFloat("Speed", Mathf.Abs(horizontal));
+
+        if (Crouch)
+        {
+            MyRigidbody.velocity = new Vector2(0, MyRigidbody.velocity.y);
+        }
+
     }
 
-    private void HandleAttacks()
-    {
-        if (attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // to check if attack animation is pressed AND if Character is Grounded AND character is not attacking at the moment
-        {
-            myAnimator.SetTrigger("Attack");
-            myRigidbody.velocity = Vector2.zero; //keep character from moving when attacking
-            Debug.Log("Attack function executed");
-        }
-
-        if (attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack")) // to check if attack animation is pressed AND character is not attacking at the moment
-        {
-            myAnimator.SetTrigger("Attack");
-            myRigidbody.velocity = Vector2.zero; //keep character from moving when attacking
-            Debug.Log("Attack function executed");
-        }
-    }
+    
     private void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {
-        if(Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X))
         {
-            jump = true;
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            attack = true;
+            myAnimator.SetTrigger("jump");
         }
 
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
-            slide = true;
-            crouch = true;
+            myAnimator.SetTrigger("attack");
         }
-       
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            myAnimator.SetTrigger("slide");
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            myAnimator.SetBool("crouch", true);
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            myAnimator.SetTrigger("throw");
+        }
 
     }
     private void Flip(float horizontal)
@@ -124,18 +124,10 @@ public class Control : MonoBehaviour {
             transform.localScale = theScale;
         }
     }
-    private void ResetValues()
-    {
-        attack = false;
-        slide = false;
-        jump = false;
-        crouch = false;
-  
-
-    }
+    
     private bool IsGrounded()
     {
-        if (myRigidbody.velocity.y <= 0)
+        if (MyRigidbody.velocity.y <= 0)
         {
             foreach (Transform point in groundPoints)
             {
