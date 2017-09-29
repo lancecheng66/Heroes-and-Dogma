@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Control : MonoBehaviour {
+public class Control : Character1
+{
 
     private static Control instance;
     public static Control Instance
@@ -18,10 +19,10 @@ public class Control : MonoBehaviour {
         }
     }
 
-    private Animator myAnimator;
-    public Transform knifePos;
-    public float movementSpeed;
-    private bool facingRight;
+   
+   
+    
+
     public Transform[] groundPoints; //points on the characters shoes for him to know if he is standing on solid ground
     public float groundRadius;
   
@@ -29,24 +30,26 @@ public class Control : MonoBehaviour {
 
     
     public bool airControl;
-    public GameObject knifePrefab;
+   
     public float jumpForce;
     public Rigidbody2D MyRigidbody { get; set; }
-    public bool Attack { get; set; }
+    
     public bool Slide { get; set; }
     public bool Jump { get; set; }
     public bool OnGround { get; set; }
     public bool Crouch { get; set; }
 
-
+    private Vector2 startPos;
 
 
     // Use this for initialization
-    void Start()
+    public override void Start()
     {
-        facingRight = true;
+        base.Start();
+        startPos = transform.position;
+        
         MyRigidbody = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
+        
     }
     private void Update()
     {
@@ -118,12 +121,7 @@ public class Control : MonoBehaviour {
     {
         if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
         {
-            facingRight = !facingRight;
-
-            Vector3 theScale = transform.localScale;
-
-            theScale.x *= -1;
-            transform.localScale = theScale;
+            ChangeDirection();
         }
     }
     
@@ -147,20 +145,9 @@ public class Control : MonoBehaviour {
         }
         return false;
     }
-    public void ThrowKnife (int value)
+    public override void ThrowKnife (int value)
     {
-       
-
-        if (facingRight)
-        {
-            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-            tmp.GetComponent<Knife>().Initialize(Vector2.right);
-        }
-        else
-        {
-            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-            tmp.GetComponent<Knife>().Initialize(Vector2.left);
-        }
+        base.ThrowKnife(value);
     }
     
 }
