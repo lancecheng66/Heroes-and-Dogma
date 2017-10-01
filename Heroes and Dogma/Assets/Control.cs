@@ -81,7 +81,7 @@ public class Control : Character1
         {
             MyRigidbody.AddForce(new Vector2(horizontal * movementSpeed, jumpForce));
         }
-        myAnimator.SetFloat("Speed", Mathf.Abs(horizontal));
+        MyAnimator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         if (Crouch)
         {
@@ -95,25 +95,25 @@ public class Control : Character1
     {
         if (Input.GetKeyDown(KeyCode.X))
         {
-            myAnimator.SetTrigger("jump");
+            MyAnimator.SetTrigger("jump");
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            myAnimator.SetTrigger("attack");
+            MyAnimator.SetTrigger("attack");
         }
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            myAnimator.SetTrigger("slide");
+            MyAnimator.SetTrigger("slide");
         }
         if (Input.GetKey(KeyCode.S))
         {
-            myAnimator.SetBool("crouch", true);
+            MyAnimator.SetBool("crouch", true);
         }
         if (Input.GetKeyDown(KeyCode.V))
         {
-            myAnimator.SetTrigger("throw");
+            MyAnimator.SetTrigger("throw");
         }
 
     }
