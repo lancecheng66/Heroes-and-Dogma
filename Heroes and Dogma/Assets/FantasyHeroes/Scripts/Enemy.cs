@@ -5,22 +5,35 @@ using UnityEngine;
 public class Enemy : Character1
 {
     private IEnemyState currentState;
-	
+    public GameObject Target { get; set;}
     // Use this for initialization
-	public override void Start ()
+    public override void Start()
     {
         base.Start();
         ChangeState(new IdleState());
-	}
-	
-	// Update is called once per frame
-	void Update ()
+    }
+
+    private void LookAtTarget()
+    {
+        if (Target !=null)
+        {
+        float xDir = Target.transform.position.x - transform.position.x;
+
+            if (xDir <0 && facingRight ||xDir >0 && !facingRight)
+            {
+                ChangeDirection();
+            }
+        }
+    }
+    // Update is called once per frame
+    void Update()
     {
         currentState.Execute();
-	}
+        LookAtTarget();
+    }
     public void ChangeState(IEnemyState newState)
     {
-        if (currentState !=null)
+        if (currentState != null)
         {
             currentState.Exit();
         }
@@ -33,9 +46,15 @@ public class Enemy : Character1
         MyAnimator.SetFloat("Speed", 1);
         transform.Translate(GetDirection() * movementSpeed * (Time.deltaTime));
     }
-    public Vector2 GetDirection() 
+    public Vector2 GetDirection()
     {
         return facingRight ? Vector2.right : Vector2.left; //this is the short vestion of an if statement. If facing right> Vector2.right, if facing left>vector2.left
-        
+
     }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        currentState.OnTriggerEnter(other);
+    }
+
 }
+
