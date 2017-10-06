@@ -2182,61 +2182,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc,
     type: 2}
   m_PrefabInternal: {fileID: 27387062}
---- !u!58 &729338986
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 729338985}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 15}
-  serializedVersion: 2
-  m_Radius: 30
---- !u!61 &729338987
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 729338985}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 60}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 60, y: 50}
-  m_EdgeRadius: 0
---- !u!58 &729338988
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 729338985}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 140}
-  serializedVersion: 2
-  m_Radius: 60
 --- !u!50 &729338989
 Rigidbody2D:
   serializedVersion: 4
@@ -5793,31 +5738,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc,
     type: 2}
   m_PrefabInternal: {fileID: 2025459165}
---- !u!114 &2025459170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2025459166}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d7360c7c866ae34b84fec354b0bf805, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knifePos: {fileID: 1290308842}
-  movementSpeed: 7
-  knifePrefab: {fileID: 1929211194601406, guid: 718b860ac3792304bbf80830d30d65e9,
-    type: 2}
-  groundPoints:
-  - {fileID: 1687466308}
-  - {fileID: 737379341}
-  - {fileID: 214354307}
-  groundRadius: 0.2
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  airControl: 1
-  jumpForce: 750
 --- !u!95 &2025459171
 Animator:
   serializedVersion: 3
@@ -5835,61 +5755,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!58 &2025459172
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2025459166}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 140}
-  serializedVersion: 2
-  m_Radius: 60
---- !u!61 &2025459173
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2025459166}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 60}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 60, y: 50}
-  m_EdgeRadius: 0
---- !u!58 &2025459174
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2025459166}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 15}
-  serializedVersion: 2
-  m_Radius: 30
 --- !u!50 &2025459175
 Rigidbody2D:
   serializedVersion: 4
@@ -5975,7 +5840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d646127040eace4cbd67e7ad7837db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  other: {fileID: 729338986}
+  other: {fileID: 0}
 --- !u!1 &2043420471
 GameObject:
   m_ObjectHideFlags: 0
