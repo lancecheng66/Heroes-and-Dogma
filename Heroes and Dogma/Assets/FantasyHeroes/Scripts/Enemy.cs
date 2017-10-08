@@ -58,6 +58,10 @@ public class Enemy : Character1
     {
         currentState.OnTriggerEnter(other);
     }
+    public override void ThrowKnife(int value)
+    {
+        base.ThrowKnife(value);
+    }
 
 }
 
