@@ -3181,7 +3181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1290308842}
   m_Layer: 0
-  m_Name: KnifePos
+  m_Name: ThrowAxePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5829,6 +5829,9 @@ MonoBehaviour:
   knifePos: {fileID: 0}
   movementSpeed: 4
   knifePrefab: {fileID: 0}
+  ProjectilePos: {fileID: 1290308842}
+  ProjectilePrefab: {fileID: 1176317761448196, guid: b31d3d304b7813040894914c467279ab,
+    type: 2}
 --- !u!114 &2025459185
 MonoBehaviour:
   m_ObjectHideFlags: 0

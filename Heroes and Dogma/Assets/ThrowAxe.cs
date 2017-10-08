@@ -15,6 +15,7 @@ public class ThrowAxe : MonoBehaviour
     void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
+        Debug.Log("Threw axe");
     }
 
     void FixedUpdate()
@@ -30,6 +31,7 @@ public class ThrowAxe : MonoBehaviour
     public void Initialize(Vector2 direction)
     {
         this.direction = direction;
+      
     }
     void OnBecameInvisible()
     {

@@ -6,6 +6,15 @@ public class Enemy : Character1
 {
     private IEnemyState currentState;
     public GameObject Target { get; set;}
+
+    [SerializeField]
+    protected Transform ProjectilePos;
+
+    protected bool facingRight;
+
+    [SerializeField]
+    GameObject ProjectilePrefab;
+
     // Use this for initialization
     public override void Start()
     {
@@ -60,7 +69,17 @@ public class Enemy : Character1
     }
     public override void ThrowKnife(int value)
     {
-        base.ThrowKnife(value);
+        if (facingRight)
+        {
+            GameObject tmp = (GameObject)Instantiate(ProjectilePrefab, ProjectilePos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+            tmp.GetComponent<ThrowAxe>().Initialize(Vector2.right);
+        }
+        else
+        {
+            GameObject tmp = (GameObject)Instantiate(ProjectilePrefab, ProjectilePos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
+            tmp.GetComponent<ThrowAxe>().Initialize(Vector2.left);
+
+        }
     }
 
 }
