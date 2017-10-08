@@ -10,7 +10,6 @@ public class Enemy : Character1
     [SerializeField]
     protected Transform ProjectilePos;
 
-    protected bool facingRight;
 
     [SerializeField]
     GameObject ProjectilePrefab;

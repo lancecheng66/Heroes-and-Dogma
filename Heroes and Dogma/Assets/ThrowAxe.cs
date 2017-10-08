@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class ThrowAxe : MonoBehaviour
 {
     public float speed;
@@ -20,7 +21,9 @@ public class ThrowAxe : MonoBehaviour
 
     void FixedUpdate()
     {
-        myRigidbody.velocity = direction * speed;
+        
+        myRigidbody.velocity = (direction * speed);
+
     }
     // Update is called once per frame
     void Update()
