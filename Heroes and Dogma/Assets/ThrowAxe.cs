@@ -5,24 +5,35 @@ using UnityEngine;
 
 public class ThrowAxe : MonoBehaviour
 {
-    public float speed;
+    public float throwforce;
 
     private Rigidbody2D myRigidbody;
 
     private Vector2 direction;
 
+    
+    
+    
+
 
     // Use this for initialization
     void Start()
     {
+
         myRigidbody = GetComponent<Rigidbody2D>();
-        Debug.Log("Threw axe");
+       if (transform.localRotation.z>0)
+        myRigidbody.AddForce(new Vector2(-1,2)*throwforce, ForceMode2D.Impulse);
+       else
+            myRigidbody.AddForce(new Vector2(1, 2) * throwforce, ForceMode2D.Impulse);
+
     }
 
     void FixedUpdate()
     {
-        
-        myRigidbody.velocity = (direction * speed);
+
+        //myRigidbody.velocity = (direction * speed);
+       
+        //myRigidbody.AddForce(transform.up*100);
 
     }
     // Update is called once per frame
