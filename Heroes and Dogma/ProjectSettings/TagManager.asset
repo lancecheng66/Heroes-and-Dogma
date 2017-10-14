@@ -14,8 +14,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -50,6 +50,9 @@ TagManager:
     locked: 0
   - name: Floor2
     uniqueID: 3635773795
+    locked: 0
+  - name: Enemy
+    uniqueID: 2134469583
     locked: 0
   - name: Player
     uniqueID: 2202359881

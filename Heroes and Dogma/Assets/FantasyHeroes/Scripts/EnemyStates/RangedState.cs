@@ -5,6 +5,7 @@ using UnityEngine;
 public class RangedState : IEnemyState
 {
     private Enemy enemy;
+
     private float throwTimer;
     private float throwCoolDown =3f;
     private bool canThrow = true;
@@ -17,9 +18,12 @@ public class RangedState : IEnemyState
     public void Execute()
     {
         ThrowKnife();
-    if (enemy.Target !=null)
+        if(enemy.InMeleeRange)
         {
-            Debug.Log("Player Detected");
+            enemy.ChangeState(new MeleeState());
+        }
+    else if (enemy.Target !=null)
+        {
             enemy.Move();
         }
     else

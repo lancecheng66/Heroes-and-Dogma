@@ -34,6 +34,7 @@ public abstract class Character1 : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y * 1, 1);
+        
     }
 
     public virtual void ThrowKnife (int value)

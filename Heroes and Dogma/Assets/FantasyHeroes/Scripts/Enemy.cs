@@ -4,10 +4,42 @@ using UnityEngine;
 
 public class Enemy : Character1
 {
+
     private IEnemyState currentState;
     public GameObject Target { get; set;}
 
     [SerializeField]
+    private float meleeRange;
+
+    [SerializeField]
+    private float throwRange;
+
+    public bool InMeleeRange
+    {
+        get
+        {
+            if (Target != null)
+            {
+                return Vector2.Distance(transform.position, Target.transform.position) <= meleeRange;
+            }
+            return false;
+        }
+    }
+
+         public bool InThrowRange
+    {
+        get
+        {
+            if (Target != null)
+            {
+                return Vector2.Distance(transform.position, Target.transform.position) <= throwRange;
+            }
+            return false;
+
+        }
+    }
+
+        [SerializeField]
     protected Transform ProjectilePos;
 
 
@@ -19,6 +51,7 @@ public class Enemy : Character1
     {
         base.Start();
         ChangeState(new IdleState());
+        // Physics2D.IgnoreLayerCollision(9,9); Keeps enemies from colliding with each other
     }
 
     private void LookAtTarget()
@@ -38,6 +71,7 @@ public class Enemy : Character1
     {
         currentState.Execute();
         LookAtTarget();
+      
     }
     public void ChangeState(IEnemyState newState)
     {
