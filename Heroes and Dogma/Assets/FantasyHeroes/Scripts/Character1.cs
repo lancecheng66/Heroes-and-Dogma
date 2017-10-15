@@ -16,7 +16,16 @@ public abstract class Character1 : MonoBehaviour
 
     [SerializeField]
     GameObject knifePrefab;
+
+    [SerializeField]
+    protected int health;
+
+    public abstract bool IsDead { get; }
+
     public bool Attack { get; set; }
+
+    public bool TakingDamage { get; set;}
+
     public Animator MyAnimator { get; private set; }
     // Use this for initialization
     public virtual void Start ()
@@ -29,6 +38,8 @@ public abstract class Character1 : MonoBehaviour
 	void Update () {
 		
 	}
+
+    public abstract IEnumerator TakeDamage();
 
     public void ChangeDirection()
     {
@@ -51,4 +62,13 @@ public abstract class Character1 : MonoBehaviour
 
         }
     }
+
+    public virtual void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "PlayerProjectile")
+        {
+            StartCoroutine(TakeDamage());
+        }
+    }
+
 }

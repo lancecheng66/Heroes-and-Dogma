@@ -2466,6 +2466,7 @@ MonoBehaviour:
   movementSpeed: 7
   knifePrefab: {fileID: 1929211194601406, guid: 718b860ac3792304bbf80830d30d65e9,
     type: 2}
+  health: 0
   groundPoints:
   - {fileID: 1967406638}
   - {fileID: 509525839}
@@ -6293,6 +6294,7 @@ MonoBehaviour:
   knifePos: {fileID: 0}
   movementSpeed: 4
   knifePrefab: {fileID: 0}
+  health: 100
   meleeRange: 1.5
   throwRange: 12
   ProjectilePos: {fileID: 1290308842}

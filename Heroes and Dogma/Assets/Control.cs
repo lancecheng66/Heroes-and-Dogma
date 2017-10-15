@@ -39,6 +39,14 @@ public class Control : Character1
     public bool OnGround { get; set; }
     public bool Crouch { get; set; }
 
+    public override bool IsDead
+    {
+        get
+        {
+            return health <= 0;
+        }
+    }
+
     private Vector2 startPos;
 
 
@@ -149,6 +157,10 @@ public class Control : Character1
     {
         base.ThrowKnife(value);
     }
-    
+
+    public override IEnumerator TakeDamage()
+    {
+        yield return null;
+    }
 }
 

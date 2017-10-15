@@ -39,7 +39,15 @@ public class Enemy : Character1
         }
     }
 
-        [SerializeField]
+    public override bool IsDead
+    {
+        get
+        {
+            return health <= 0;
+        }
+    }
+
+    [SerializeField]
     protected Transform ProjectilePos;
 
 
@@ -69,9 +77,15 @@ public class Enemy : Character1
     // Update is called once per frame
     void Update()
     {
-        currentState.Execute();
-        LookAtTarget();
-      
+        if (!IsDead)
+        {
+            if(!TakingDamage)
+            {
+                currentState.Execute();
+            }
+            currentState.Execute();
+            LookAtTarget();
+        }
     }
     public void ChangeState(IEnemyState newState)
     {
@@ -96,8 +110,9 @@ public class Enemy : Character1
         return facingRight ? Vector2.right : Vector2.left; //this is the short vestion of an if statement. If facing right> Vector2.right, if facing left>vector2.left
 
     }
-    void OnTriggerEnter2D(Collider2D other)
+    public override void OnTriggerEnter2D(Collider2D other)
     {
+        base.OnTriggerEnter2D(other);
         currentState.OnTriggerEnter(other);
     }
     public override void ThrowKnife(int value)
@@ -115,5 +130,19 @@ public class Enemy : Character1
         }
     }
 
+    public override IEnumerator TakeDamage()
+    {
+        health -= 10;
+
+        if (!IsDead)
+        {
+            MyAnimator.SetTrigger("damage");
+        }
+        else
+        {
+            MyAnimator.SetTrigger("die");
+            yield return null;
+        }
+    }
 }
 
