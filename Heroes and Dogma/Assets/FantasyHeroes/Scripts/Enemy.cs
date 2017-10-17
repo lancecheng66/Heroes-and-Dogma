@@ -132,6 +132,7 @@ public class Enemy : Character1
 
     public override IEnumerator TakeDamage()
     {
+        Debug.Log("hurt");
         health -= 10;
 
         if (!IsDead)

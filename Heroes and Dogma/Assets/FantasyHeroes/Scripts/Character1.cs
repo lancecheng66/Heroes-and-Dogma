@@ -20,6 +20,12 @@ public abstract class Character1 : MonoBehaviour
     [SerializeField]
     protected int health;
 
+    [SerializeField]
+    private EdgeCollider2D SwordCollider;
+
+    [SerializeField]
+    private List<string> damageSources;
+
     public abstract bool IsDead { get; }
 
     public bool Attack { get; set; }
@@ -32,6 +38,7 @@ public abstract class Character1 : MonoBehaviour
     {
         facingRight = true;
         MyAnimator = GetComponent<Animator>();
+        
     }
 	
 	// Update is called once per frame
@@ -50,6 +57,7 @@ public abstract class Character1 : MonoBehaviour
 
     public virtual void ThrowKnife (int value)
     {
+        Physics2D.IgnoreLayerCollision(10, 11);
         if (facingRight)
         {
             GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
@@ -63,9 +71,15 @@ public abstract class Character1 : MonoBehaviour
         }
     }
 
+    public void MeleeAttack()
+    {
+        Physics2D.IgnoreLayerCollision(10, 11);
+        SwordCollider.enabled = !SwordCollider.enabled;
+    }
+
     public virtual void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "PlayerProjectile")
+        if (damageSources.Contains(other.tag))
         {
             StartCoroutine(TakeDamage());
         }

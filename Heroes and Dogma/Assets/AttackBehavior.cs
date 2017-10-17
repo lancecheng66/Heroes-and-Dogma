@@ -30,6 +30,11 @@ public class AttackBehavior : StateMachineBehaviour {
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         animator.GetComponent<Character1>().Attack = false;
+        if(stateInfo.IsTag("Attack"))
+        {
+            animator.GetComponent<Character1>().MeleeAttack();
+        }
+        
         animator.ResetTrigger("attack");
         animator.ResetTrigger("throw");
     }
