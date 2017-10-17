@@ -61,17 +61,27 @@ public class Control : Character1
     }
     private void Update()
     {
+        if (!TakingDamage && !IsDead)
+        {
+
+            if (transform.position.y <= -14f)
+            {
+                MyRigidbody.velocity = Vector2.zero;
+                transform.position = startPos;
+            }
+        }
         HandleInput();
-       
     }
     // Update is called once per frame
     void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal_P1"); // "HORIZONTAL" is the name of a unity feature for movement control. You can see it in Edit>Project Settings>Input.
-        OnGround = IsGrounded();
-        HandleMovement(horizontal);
-        Flip(horizontal);
-       
+        if (!TakingDamage&&!IsDead)
+        {
+            float horizontal = Input.GetAxis("Horizontal_P1"); // "HORIZONTAL" is the name of a unity feature for movement control. You can see it in Edit>Project Settings>Input.
+            OnGround = IsGrounded();
+            HandleMovement(horizontal);
+            Flip(horizontal);
+        }
     }
 
 
@@ -160,6 +170,17 @@ public class Control : Character1
 
     public override IEnumerator TakeDamage()
     {
+        health -= 10;
+        if(!IsDead)
+        {
+            MyAnimator.SetTrigger("damage");
+        }
+
+        else
+        {
+            MyAnimator.SetLayerWeight(1, 0);
+            MyAnimator.SetTrigger("die");
+        }
         yield return null;
     }
 }

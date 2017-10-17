@@ -170,11 +170,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4857010035129676, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 2.6562529
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4638287210593666, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 7.968752
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1675,6 +1675,56 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &314755884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 314755885}
+  - component: {fileID: 314755886}
+  m_Layer: 11
+  m_Name: SwordCollider
+  m_TagString: EnemySword
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &314755885
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 314755884}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 92, y: 27, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_Children: []
+  m_Father: {fileID: 2025459169}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &314755886
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 314755884}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.1551804, y: -0.8254773}
+  - {x: -0.19695294, y: 0.9309191}
+  - {x: -0.023547053, y: 0.41906074}
+  - {x: 0.06083268, y: 0.057779387}
+  - {x: -0.024172425, y: -0.43205732}
+  - {x: -0.1582923, y: -0.8672737}
 --- !u!1 &339956424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,9 +2574,11 @@ MonoBehaviour:
   movementSpeed: 7
   knifePrefab: {fileID: 1929211194601406, guid: 718b860ac3792304bbf80830d30d65e9,
     type: 2}
-  health: 0
-  SwordCollider: {fileID: 99373987}
-  damageSources: []
+  health: 100
+  swordCollider: {fileID: 99373987}
+  damageSources:
+  - EnemyProjectile
+  - EnemySword
   groundPoints:
   - {fileID: 1967406638}
   - {fileID: 509525839}
@@ -3473,7 +3525,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1290308842}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: ThrowAxePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3643,7 +3695,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1351487236}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: KnifePos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4935,11 +4987,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4857010035129676, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -2.6851873
+      value: -0.99140745
       objectReference: {fileID: 0}
     - target: {fileID: 4638287210593666, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 4.7222214
+      value: -3.9656298
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6355,7 +6407,7 @@ MonoBehaviour:
   movementSpeed: 2
   knifePrefab: {fileID: 0}
   health: 100
-  SwordCollider: {fileID: 0}
+  swordCollider: {fileID: 314755886}
   damageSources:
   - PlayerProjectile
   - Sword

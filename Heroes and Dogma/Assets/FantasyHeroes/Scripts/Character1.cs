@@ -21,7 +21,7 @@ public abstract class Character1 : MonoBehaviour
     protected int health;
 
     [SerializeField]
-    private EdgeCollider2D SwordCollider;
+    private EdgeCollider2D swordCollider;
 
     [SerializeField]
     private List<string> damageSources;
@@ -33,6 +33,17 @@ public abstract class Character1 : MonoBehaviour
     public bool TakingDamage { get; set;}
 
     public Animator MyAnimator { get; private set; }
+
+    public EdgeCollider2D SwordCollider
+    {
+        get
+        {
+            return swordCollider;
+        }
+
+        
+    }
+
     // Use this for initialization
     public virtual void Start ()
     {
@@ -74,7 +85,7 @@ public abstract class Character1 : MonoBehaviour
     public void MeleeAttack()
     {
         Physics2D.IgnoreLayerCollision(10, 11);
-        SwordCollider.enabled = !SwordCollider.enabled;
+        SwordCollider.enabled = true;
     }
 
     public virtual void OnTriggerEnter2D(Collider2D other)
