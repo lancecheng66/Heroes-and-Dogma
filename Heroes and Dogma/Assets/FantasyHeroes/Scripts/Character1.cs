@@ -59,6 +59,8 @@ public abstract class Character1 : MonoBehaviour
 
     public abstract IEnumerator TakeDamage();
 
+    public abstract void Death();
+
     public void ChangeDirection()
     {
         facingRight = !facingRight;

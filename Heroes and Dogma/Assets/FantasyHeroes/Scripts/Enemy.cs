@@ -54,12 +54,24 @@ public class Enemy : Character1
     [SerializeField]
     GameObject ProjectilePrefab;
 
+    protected Enemy()
+    {
+    }
+
     // Use this for initialization
     public override void Start()
     {
         base.Start();
+        Control.Instance.Dead += new DeadEventHandler(RemoveTarget);
         ChangeState(new IdleState());
         // Physics2D.IgnoreLayerCollision(9,9); Keeps enemies from colliding with each other
+    }
+
+
+    public void RemoveTarget()
+    {
+        Target = null;
+        ChangeState(new PatrolState());
     }
 
     private void LookAtTarget()
@@ -144,6 +156,11 @@ public class Enemy : Character1
             MyAnimator.SetTrigger("die");
             yield return null;
         }
+    }
+
+    public override void Death()
+    {
+        Destroy(gameObject);
     }
 }
 

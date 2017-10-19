@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public delegate void DeadEventHandler();
 public class Control : Character1
 {
 
     private static Control instance;
+
+    public event DeadEventHandler Dead;
+
     public static Control Instance
     {
         get
@@ -32,6 +35,15 @@ public class Control : Character1
     public bool airControl;
    
     public float jumpForce;
+
+    private bool immortal = false;
+
+    private SpriteRenderer spriteRenderer;
+
+
+    [SerializeField]
+    private float immortalTime;
+
     public Rigidbody2D MyRigidbody { get; set; }
     
     public bool Slide { get; set; }
@@ -43,6 +55,10 @@ public class Control : Character1
     {
         get
         {
+            if (health <= 0)
+            {
+                OnDead();
+            }
             return health <= 0;
         }
     }
@@ -53,9 +69,9 @@ public class Control : Character1
     // Use this for initialization
     public override void Start()
     {
-        base.Start();
+        base.Start();   
         startPos = transform.position;
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
         MyRigidbody = GetComponent<Rigidbody2D>();
         
     }
@@ -66,8 +82,7 @@ public class Control : Character1
 
             if (transform.position.y <= -14f)
             {
-                MyRigidbody.velocity = Vector2.zero;
-                transform.position = startPos;
+                Death();
             }
         }
         HandleInput();
@@ -84,7 +99,13 @@ public class Control : Character1
         }
     }
 
-
+    public void OnDead()
+    {
+        if(Dead!= null)
+        {
+            Dead();
+        }
+    }
     //METHODS:
 
     private void HandleMovement(float horizontal) // The horizontal in the parenthesis gets its value from the float Horizontal = blah blah in the fixed update
@@ -168,20 +189,52 @@ public class Control : Character1
         base.ThrowKnife(value);
     }
 
+    private IEnumerator IndicateImmortal()
+    {
+        while (immortal)
+        {
+            foreach (Renderer r in GetComponentsInChildren<Renderer>())
+                r.enabled = false;
+                yield return new WaitForSeconds(.1f);
+
+            foreach (Renderer r in GetComponentsInChildren<Renderer>())
+                r.enabled = true;
+                yield return new WaitForSeconds(.1f);
+            
+        }
+    }
+
     public override IEnumerator TakeDamage()
     {
-        health -= 10;
-        if(!IsDead)
+        if (!immortal)
         {
-            MyAnimator.SetTrigger("damage");
-        }
+            health -= 10;
+            if (!IsDead)
+            {
+                MyAnimator.SetTrigger("damage");
+                immortal = true;
+                StartCoroutine(IndicateImmortal());
+                yield return new WaitForSeconds(immortalTime);
+                immortal = false;
 
-        else
-        {
-            MyAnimator.SetLayerWeight(1, 0);
-            MyAnimator.SetTrigger("die");
+            }
+
+            else
+            {
+                MyAnimator.SetLayerWeight(1, 0);
+                MyAnimator.SetTrigger("die");
+                Physics2D.IgnoreLayerCollision(8, 9); // stops collision with enemies
+                Physics2D.IgnoreLayerCollision(8, 8); // stops collision with other players
+            }
         }
-        yield return null;
+    }
+
+    public override void Death()
+    {
+        MyRigidbody.velocity = Vector2.zero;
+        MyAnimator.SetTrigger("idle");
+        health = 30;
+        transform.position = startPos;
     }
 }
 
