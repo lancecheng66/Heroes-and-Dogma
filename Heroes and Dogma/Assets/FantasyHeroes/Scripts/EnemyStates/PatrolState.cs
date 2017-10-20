@@ -36,6 +36,10 @@ public class PatrolState : IEnemyState
         {
             enemy.ChangeDirection();
         }
+        if (other.tag == "PlayerProjectile")
+        {
+            enemy.Target = Control.Instance.gameObject;
+        }
     }
     private void Patrol()
     {

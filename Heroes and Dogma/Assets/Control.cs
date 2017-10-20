@@ -58,6 +58,7 @@ public class Control : Character1
             if (health <= 0)
             {
                 OnDead();
+
             }
             return health <= 0;
         }
@@ -103,6 +104,7 @@ public class Control : Character1
     {
         if(Dead!= null)
         {
+            
             Dead();
         }
     }
@@ -223,8 +225,7 @@ public class Control : Character1
             {
                 MyAnimator.SetLayerWeight(1, 0);
                 MyAnimator.SetTrigger("die");
-                Physics2D.IgnoreLayerCollision(8, 9); // stops collision with enemies
-                Physics2D.IgnoreLayerCollision(8, 8); // stops collision with other players
+                
             }
         }
     }

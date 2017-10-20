@@ -31,7 +31,10 @@ public class IdleState : IEnemyState
 
     public void OnTriggerEnter(Collider2D other)
     {
-        
+        if (other.tag =="PlayerProjectile")
+        {
+            enemy.Target = Control.Instance.gameObject;
+        }
     }
     private void Idle()
     {

@@ -155,11 +155,14 @@ public class Enemy : Character1
         {
             MyAnimator.SetTrigger("die");
             yield return null;
+            Physics2D.IgnoreLayerCollision(8, 9); // stops collision with enemies
+            Physics2D.IgnoreLayerCollision(8, 8); // stops collision with other players
         }
     }
 
     public override void Death()
     {
+        
         Destroy(gameObject);
     }
 }

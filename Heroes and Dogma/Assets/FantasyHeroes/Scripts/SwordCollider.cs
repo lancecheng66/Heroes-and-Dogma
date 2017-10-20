@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class SwordCollider : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField]
+    private string targetTag;
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == targetTag)
+        {
+            GetComponent<Collider2D>().enabled = false;
+        }
+    }
+
 }
