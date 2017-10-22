@@ -3460,26 +3460,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1 &1106429299 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1422012561959226, guid: fef1bf248a58c2441a6873de44f518dc,
-    type: 2}
-  m_PrefabInternal: {fileID: 2025459165}
---- !u!58 &1106429302
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1106429299}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.0036611555, y: -0.55}
-  serializedVersion: 2
-  m_Radius: 0.3
 --- !u!1 &1218171635
 GameObject:
   m_ObjectHideFlags: 0
@@ -6570,11 +6550,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc,
     type: 2}
   m_PrefabInternal: {fileID: 2025459165}
---- !u!1 &2025459167 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1734319526942654, guid: fef1bf248a58c2441a6873de44f518dc,
-    type: 2}
-  m_PrefabInternal: {fileID: 2025459165}
 --- !u!1 &2025459168 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1947158995107830, guid: fef1bf248a58c2441a6873de44f518dc,
@@ -6622,21 +6597,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &2025459176
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2025459167}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.65}
-  serializedVersion: 2
-  m_Radius: 0.7
 --- !u!61 &2025459177
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6649,7 +6609,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006128788, y: 0}
+  m_Offset: {x: 0.006128788, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.497392, y: 0.40933985}
@@ -6660,7 +6620,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8}
+  m_Size: {x: 1, y: 2.5}
   m_EdgeRadius: 0
 --- !u!114 &2025459184
 MonoBehaviour:
@@ -6681,7 +6641,7 @@ MonoBehaviour:
   damageSources:
   - PlayerProjectile
   - Sword
-  meleeRange: 1.5
+  meleeRange: 1
   throwRange: 12
   ProjectilePos: {fileID: 1290308842}
   ProjectilePrefab: {fileID: 1176317761448196, guid: b31d3d304b7813040894914c467279ab,
