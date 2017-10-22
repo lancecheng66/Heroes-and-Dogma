@@ -14,6 +14,11 @@ public class Enemy : Character1
     [SerializeField]
     private float throwRange;
 
+    [SerializeField]
+    private Transform leftEdge;
+    [SerializeField]
+    private Transform rightEdge;
+
     public bool InMeleeRange
     {
         get
@@ -113,8 +118,15 @@ public class Enemy : Character1
     {
         if (!Attack)
         {
-            MyAnimator.SetFloat("Speed", 1);
-            transform.Translate(GetDirection() * movementSpeed * (Time.deltaTime));
+            if ((GetDirection().x > 0 && transform.position.x < rightEdge.position.x)|| (GetDirection().x < 0 && transform.position.x > leftEdge.position.x))
+            {
+                MyAnimator.SetFloat("Speed", 1);
+                transform.Translate(GetDirection() * movementSpeed * (Time.deltaTime));
+            }
+            else if (currentState is PatrolState)
+            {
+                ChangeDirection();
+            }
         }
     }
     public Vector2 GetDirection()
