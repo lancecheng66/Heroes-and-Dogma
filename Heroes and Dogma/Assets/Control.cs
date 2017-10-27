@@ -10,6 +10,9 @@ public class Control : Character1
 
     public event DeadEventHandler Dead;
 
+    [SerializeField]
+    private Stat healthStat;
+
     public static Control Instance
     {
         get
@@ -55,12 +58,12 @@ public class Control : Character1
     {
         get
         {
-            if (health <= 0)
+            if (healthStat.CurrentValue<= 0)
             {
                 OnDead();
 
             }
-            return health <= 0;
+            return healthStat.CurrentValue <= 0;
         }
     }
 
@@ -74,6 +77,7 @@ public class Control : Character1
         startPos = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
         MyRigidbody = GetComponent<Rigidbody2D>();
+        healthStat.Initialize(); //initializes the health bar so that it starts at full life
         
     }
     private void Update()
@@ -210,7 +214,7 @@ public class Control : Character1
     {
         if (!immortal)
         {
-            health -= 10;
+            healthStat.CurrentValue -= 10;
             if (!IsDead)
             {
                 MyAnimator.SetTrigger("damage");
@@ -234,7 +238,7 @@ public class Control : Character1
     {
         MyRigidbody.velocity = Vector2.zero;
         MyAnimator.SetTrigger("idle");
-        health = 30;
+        healthStat.CurrentValue = healthStat.MaxVal;
         transform.position = startPos;
     }
 }
