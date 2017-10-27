@@ -18,6 +18,7 @@ public class Enemy : Character1
     private Transform leftEdge;
     [SerializeField]
     private Transform rightEdge;
+    private Canvas healthCanvas;
 
     public bool InMeleeRange
     {
@@ -48,7 +49,7 @@ public class Enemy : Character1
     {
         get
         {
-            return health <= 0;
+            return healthStat.CurrentValue <= 0;
         }
     }
 
@@ -70,6 +71,7 @@ public class Enemy : Character1
         Control.Instance.Dead += new DeadEventHandler(RemoveTarget);
         ChangeState(new IdleState());
         // Physics2D.IgnoreLayerCollision(9,9); Keeps enemies from colliding with each other
+        healthCanvas = transform.GetComponentInChildren<Canvas>();
     }
 
 
@@ -156,8 +158,12 @@ public class Enemy : Character1
 
     public override IEnumerator TakeDamage()
     {
+        if(!healthCanvas.isActiveAndEnabled)
+        {
+            healthCanvas.enabled = true;
+        }
         Debug.Log("hurt");
-        health -= 10;
+        healthStat.CurrentValue -= 10;
 
         if (!IsDead)
         {
@@ -174,8 +180,10 @@ public class Enemy : Character1
 
     public override void Death()
     {
-        
+
+        healthStat.CurrentValue = healthStat.MaxVal;
         Destroy(gameObject);
+        healthCanvas.enabled = false;
     }
 }
 

@@ -5,7 +5,7 @@ using System.Text;
 using UnityEngine;
 
 [Serializable]
-class Stat
+public class Stat
 {
     /// <summary>
     /// A reference to the bar that this stat is controlling

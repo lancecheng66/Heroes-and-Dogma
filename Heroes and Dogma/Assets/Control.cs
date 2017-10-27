@@ -10,9 +10,6 @@ public class Control : Character1
 
     public event DeadEventHandler Dead;
 
-    [SerializeField]
-    private Stat healthStat;
-
     public static Control Instance
     {
         get
@@ -77,7 +74,7 @@ public class Control : Character1
         startPos = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
         MyRigidbody = GetComponent<Rigidbody2D>();
-        healthStat.Initialize(); //initializes the health bar so that it starts at full life
+        
         
     }
     private void Update()

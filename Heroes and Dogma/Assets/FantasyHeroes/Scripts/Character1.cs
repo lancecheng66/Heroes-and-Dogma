@@ -18,7 +18,7 @@ public abstract class Character1 : MonoBehaviour
     GameObject knifePrefab;
 
     [SerializeField]
-    protected int health;
+    protected Stat healthStat;
 
     [SerializeField]
     private EdgeCollider2D swordCollider;
@@ -49,7 +49,7 @@ public abstract class Character1 : MonoBehaviour
     {
         facingRight = true;
         MyAnimator = GetComponent<Animator>();
-        
+        healthStat.Initialize(); //initializes the health bar so that it starts at full life
     }
 	
 	// Update is called once per frame
