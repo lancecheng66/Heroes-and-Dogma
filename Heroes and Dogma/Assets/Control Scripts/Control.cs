@@ -133,9 +133,9 @@ public class Control : Character1
     }
 
     
-    private void HandleInput() // where we put in controls (we can use this to make 2-3 player games
+    public virtual void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             MyAnimator.SetTrigger("jump");
         }
@@ -153,7 +153,7 @@ public class Control : Character1
         {
             MyAnimator.SetBool("crouch", true);
         }
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             MyAnimator.SetTrigger("throw");
         }

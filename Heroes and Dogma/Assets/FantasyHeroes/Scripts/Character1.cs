@@ -15,7 +15,7 @@ public abstract class Character1 : MonoBehaviour
     protected bool facingRight;
 
     [SerializeField]
-    GameObject knifePrefab;
+    public GameObject knifePrefab;
 
     [SerializeField]
     protected Stat healthStat;
@@ -84,7 +84,7 @@ public abstract class Character1 : MonoBehaviour
         }
     }
 
-    public void MeleeAttack()
+    public virtual void MeleeAttack()
     {
         Physics2D.IgnoreLayerCollision(10, 11);
         SwordCollider.enabled = true;

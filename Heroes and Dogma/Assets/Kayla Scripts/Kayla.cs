@@ -3,240 +3,75 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public delegate void DeadEventHandlerKayla();
-public class Kayla : Character1
+public class Kayla : Control
 {
 
-    private static Control instance;
-
-    public event DeadEventHandlerKayla Dead;
-
-    public static Control Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<Control>();
-            }
-            return instance;
-        }
-    }
-
-
-
-
-
-    public Transform[] groundPoints; //points on the characters shoes for him to know if he is standing on solid ground
-    public float groundRadius;
-
-    public LayerMask whatIsGround;
-
-
-    public bool airControl;
-
-    public float jumpForce;
-
-    private bool immortal = false;
-
-    private SpriteRenderer spriteRenderer;
-
+    [SerializeField]
+    protected Transform boltPos;
 
     [SerializeField]
-    private float immortalTime;
+    public GameObject boltPrefab;
 
-    public Rigidbody2D MyRigidbody { get; set; }
 
-    public bool Slide { get; set; }
-    public bool Jump { get; set; }
-    public bool OnGround { get; set; }
-    public bool Crouch { get; set; }
-
-    public override bool IsDead
+    public override void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {
-        get
-        {
-            if (healthStat.CurrentValue <= 0)
-            {
-                OnDead();
-
-            }
-            return healthStat.CurrentValue <= 0;
-        }
-    }
-
-    private Vector2 startPos;
-
-
-    // Use this for initialization
-    public override void Start()
-    {
-        base.Start();
-        startPos = transform.position;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        MyRigidbody = GetComponent<Rigidbody2D>();
-
-
-    }
-    private void Update()
-    {
-        if (!TakingDamage && !IsDead)
-        {
-
-            if (transform.position.y <= -14f)
-            {
-                Death();
-            }
-        }
-        HandleInput();
-    }
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        if (!TakingDamage && !IsDead)
-        {
-            float horizontal = Input.GetAxis("Horizontal_P1"); // "HORIZONTAL" is the name of a unity feature for movement control. You can see it in Edit>Project Settings>Input.
-            OnGround = IsGrounded();
-            HandleMovement(horizontal);
-            Flip(horizontal);
-        }
-    }
-
-    public void OnDead()
-    {
-        if (Dead != null)
-        {
-
-            Dead();
-        }
-    }
-    //METHODS:
-
-    private void HandleMovement(float horizontal) // The horizontal in the parenthesis gets its value from the float Horizontal = blah blah in the fixed update
-    {
-
-        if (!Attack && (OnGround || airControl))
-        {
-            MyRigidbody.velocity = new Vector2(horizontal * movementSpeed, MyRigidbody.velocity.y);
-        }
-
-        if (Jump && MyRigidbody.velocity.y == 0)
-        {
-            MyRigidbody.AddForce(new Vector2(horizontal * movementSpeed, jumpForce));
-        }
-        MyAnimator.SetFloat("Speed", Mathf.Abs(horizontal));
-
-        if (Crouch)
-        {
-            MyRigidbody.velocity = new Vector2(0, MyRigidbody.velocity.y);
-        }
-
-    }
-
-
-    private void HandleInput() // where we put in controls (we can use this to make 2-3 player games
-    {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             MyAnimator.SetTrigger("jump");
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             MyAnimator.SetTrigger("attack");
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             MyAnimator.SetTrigger("slide");
         }
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.K))
         {
             MyAnimator.SetBool("crouch", true);
         }
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             MyAnimator.SetTrigger("throw");
         }
 
     }
-    private void Flip(float horizontal)
-    {
-        if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
-        {
-            ChangeDirection();
-        }
-    }
 
-    private bool IsGrounded()
-    {
-        if (MyRigidbody.velocity.y <= 0)
-        {
-            foreach (Transform point in groundPoints)
-            {
-                Collider2D[] colliders = Physics2D.OverlapCircleAll(point.position, groundRadius, whatIsGround);
-
-                for (int i = 0; i < colliders.Length; i++)
-                {
-                    if (colliders[i].gameObject != gameObject)
-                    {
-                        return true;
-                    }
-
-                }
-            }
-        }
-        return false;
-    }
     public override void ThrowKnife(int value)
     {
-        base.ThrowKnife(value);
-    }
-
-    private IEnumerator IndicateImmortal()
-    {
-        while (immortal)
+        Physics2D.IgnoreLayerCollision(10, 11);
+        if (facingRight)
         {
-            foreach (Renderer r in GetComponentsInChildren<Renderer>())
-                r.enabled = false;
-            yield return new WaitForSeconds(.1f);
-
-            foreach (Renderer r in GetComponentsInChildren<Renderer>())
-                r.enabled = true;
-            yield return new WaitForSeconds(.1f);
+            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+            tmp.GetComponent<Knife>().Initialize(Vector2.right); //change knife to fireball so that you can code different behavior for explosions
+        }
+        else
+        {
+            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
+            tmp.GetComponent<Knife>().Initialize(Vector2.left); //change knife to fireball so that you can code different behavior for explosions
 
         }
     }
 
-    public override IEnumerator TakeDamage()
+    public override void MeleeAttack()
     {
-        if (!immortal)
-        {
-            healthStat.CurrentValue -= 10;
-            if (!IsDead)
+        Physics2D.IgnoreLayerCollision(10, 11);
+       
+            if (facingRight)
             {
-                MyAnimator.SetTrigger("damage");
-                immortal = true;
-                StartCoroutine(IndicateImmortal());
-                yield return new WaitForSeconds(immortalTime);
-                immortal = false;
-
+                GameObject tmp = (GameObject)Instantiate(boltPrefab, boltPos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+                tmp.GetComponent<Knife>().Initialize(Vector2.right); //change knife to fireball so that you can code different behavior for explosions
             }
-
             else
             {
-                MyAnimator.SetLayerWeight(1, 0);
-                MyAnimator.SetTrigger("die");
+                GameObject tmp = (GameObject)Instantiate(boltPrefab, boltPos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
+                tmp.GetComponent<Knife>().Initialize(Vector2.left); //change knife to fireball so that you can code different behavior for explosions
 
             }
-        }
-    }
-
-    public override void Death()
-    {
-        MyRigidbody.velocity = Vector2.zero;
-        MyAnimator.SetTrigger("idle");
-        healthStat.CurrentValue = healthStat.MaxVal;
-        transform.position = startPos;
+        
     }
 }
 
