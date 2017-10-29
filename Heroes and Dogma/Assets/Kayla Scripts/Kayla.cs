@@ -51,12 +51,12 @@ public class Kayla : Control
         if (facingRight)
         {
             GameObject tmp = (GameObject)Instantiate(AsteroidPrefab, AsteroidPos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-            tmp.GetComponent<Asteroid>().Initialize(Vector2.right); //change knife to fireball so that you can code different behavior for explosions
+            tmp.GetComponent<Asteroid>().Initialize(Vector2.right); 
         }
         else
         {
             GameObject tmp = (GameObject)Instantiate(AsteroidPrefab, AsteroidPos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-            tmp.GetComponent<Asteroid>().Initialize(Vector2.left); //change knife to fireball so that you can code different behavior for explosions
+            tmp.GetComponent<Asteroid>().Initialize(Vector2.left); 
 
         }
     }

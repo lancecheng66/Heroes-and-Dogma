@@ -26,14 +26,12 @@ public class ThrowAxe : MonoBehaviour
        else
             myRigidbody.AddForce(new Vector2(1, 2) * throwforce, ForceMode2D.Impulse);
 
+        myRigidbody.AddTorque(1 * 1 * -150);
     }
 
     void FixedUpdate()
     {
 
-        //myRigidbody.velocity = (direction * speed);
-       
-        //myRigidbody.AddForce(transform.up*100);
 
     }
     // Update is called once per frame
