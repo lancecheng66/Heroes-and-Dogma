@@ -2002,7 +2002,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_Name
-      value: Shingen
+      value: Jarred
       objectReference: {fileID: 0}
     - target: {fileID: 95771258336674664, guid: fef1bf248a58c2441a6873de44f518dc,
         type: 2}
@@ -2873,7 +2873,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212124483523348794, guid: fef1bf248a58c2441a6873de44f518dc,
         type: 2}
@@ -3377,13 +3377,13 @@ Prefab:
         type: 2}
       propertyPath: Hair
       value: 
-      objectReference: {fileID: 21300000, guid: fade6bf4b5041a4409cbffabb301bf4f,
+      objectReference: {fileID: 21300000, guid: 4d4810e932acc0942adc376289d5bd8b,
         type: 3}
     - target: {fileID: 212462887887202068, guid: fef1bf248a58c2441a6873de44f518dc,
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: fade6bf4b5041a4409cbffabb301bf4f,
+      objectReference: {fileID: 21300000, guid: 4d4810e932acc0942adc376289d5bd8b,
         type: 3}
     - target: {fileID: 212462887887202068, guid: fef1bf248a58c2441a6873de44f518dc,
         type: 2}
@@ -3557,44 +3557,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc,
     type: 2}
   m_PrefabInternal: {fileID: 115966099}
---- !u!114 &115966105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 115966100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76a635d59cf4e6c49be83cda74e4b85d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knifePos: {fileID: 1604290292}
-  movementSpeed: 5
-  knifePrefab: {fileID: 1176317761448196, guid: b31d3d304b7813040894914c467279ab,
-    type: 2}
-  healthStat:
-    bar: {fileID: 1187659507}
-    maxVal: 100
-    currentVal: 100
-  swordCollider: {fileID: 1444670354}
-  damageSources:
-  - EnemyProjectile
-  - EnemySword
-  groundPoints:
-  - {fileID: 250586527}
-  - {fileID: 1145587869}
-  - {fileID: 1948234316}
-  groundRadius: 0.2
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  airControl: 1
-  jumpForce: 750
-  immortalTime: 3
-  AsteroidPos: {fileID: 0}
-  AsteroidPrefab: {fileID: 0}
-  boltPos: {fileID: 1604290292}
-  boltPrefab: {fileID: 1929211194601406, guid: 718b860ac3792304bbf80830d30d65e9, type: 2}
 --- !u!95 &115966106
 Animator:
   serializedVersion: 3
@@ -3687,6 +3649,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &115966111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115966100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8a61dc44e744964680f78b2bfa0e356, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knifePos: {fileID: 1604290292}
+  movementSpeed: 7
+  knifePrefab: {fileID: 1315436550531168, guid: cf60a70f168cfff46b3164e8ed3229df,
+    type: 2}
+  healthStat:
+    bar: {fileID: 1187659507}
+    maxVal: 100
+    currentVal: 100
+  swordCollider: {fileID: 1444670354}
+  damageSources:
+  - EnemyProjectile
+  - EnemySword
+  groundPoints:
+  - {fileID: 250586527}
+  - {fileID: 1145587869}
+  - {fileID: 1948234316}
+  groundRadius: 0.2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  airControl: 1
+  jumpForce: 1000
+  immortalTime: 3
 --- !u!1 &127801604
 GameObject:
   m_ObjectHideFlags: 0
@@ -3979,7 +3975,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalScale.x
@@ -4866,7 +4862,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212124483523348794, guid: fef1bf248a58c2441a6873de44f518dc,
         type: 2}
@@ -7365,7 +7361,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalScale.x
@@ -9482,7 +9478,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 981372469}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -836, y: 2663, z: 0}
+  m_LocalPosition: {x: -1614, y: 2387, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1428433966}
@@ -11768,7 +11764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knifePos: {fileID: 981372470}
   movementSpeed: 5
-  knifePrefab: {fileID: 1094349565596602, guid: 01a0825017a9c624693acbb8658df64f,
+  knifePrefab: {fileID: 1707342571495148, guid: f763638b629eb5147822880754050879,
     type: 2}
   healthStat:
     bar: {fileID: 1187659507}
@@ -11790,7 +11786,7 @@ MonoBehaviour:
   jumpForce: 750
   immortalTime: 3
   AsteroidPos: {fileID: 981372470}
-  AsteroidPrefab: {fileID: 1094349565596602, guid: 01a0825017a9c624693acbb8658df64f,
+  AsteroidPrefab: {fileID: 1707342571495148, guid: f763638b629eb5147822880754050879,
     type: 2}
   boltPos: {fileID: 1474801240}
   boltPrefab: {fileID: 1231874434270268, guid: 40c11c996d68211438e93cbde8c2cf48, type: 2}
@@ -12658,7 +12654,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1636263556
 GameObject:
@@ -15636,7 +15632,7 @@ Transform:
   m_Children:
   - {fileID: 33759296}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2043420477
 MonoBehaviour:

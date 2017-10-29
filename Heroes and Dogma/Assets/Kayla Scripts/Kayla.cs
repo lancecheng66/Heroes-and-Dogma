@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public delegate void DeadEventHandlerKayla();
+
 public class Kayla : Control
 {
     [SerializeField]
