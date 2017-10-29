@@ -5,6 +5,11 @@ using UnityEngine;
 public delegate void DeadEventHandlerKayla();
 public class Kayla : Control
 {
+    [SerializeField]
+    protected Transform AsteroidPos;
+
+    [SerializeField]
+    public GameObject AsteroidPrefab;
 
     [SerializeField]
     protected Transform boltPos;
@@ -45,13 +50,13 @@ public class Kayla : Control
         Physics2D.IgnoreLayerCollision(10, 11);
         if (facingRight)
         {
-            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-            tmp.GetComponent<Knife>().Initialize(Vector2.right); //change knife to fireball so that you can code different behavior for explosions
+            GameObject tmp = (GameObject)Instantiate(AsteroidPrefab, AsteroidPos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+            tmp.GetComponent<Asteroid>().Initialize(Vector2.right); //change knife to fireball so that you can code different behavior for explosions
         }
         else
         {
-            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-            tmp.GetComponent<Knife>().Initialize(Vector2.left); //change knife to fireball so that you can code different behavior for explosions
+            GameObject tmp = (GameObject)Instantiate(AsteroidPrefab, AsteroidPos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
+            tmp.GetComponent<Asteroid>().Initialize(Vector2.left); //change knife to fireball so that you can code different behavior for explosions
 
         }
     }
@@ -63,12 +68,12 @@ public class Kayla : Control
             if (facingRight)
             {
                 GameObject tmp = (GameObject)Instantiate(boltPrefab, boltPos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-                tmp.GetComponent<Knife>().Initialize(Vector2.right); //change knife to fireball so that you can code different behavior for explosions
+                tmp.GetComponent<Bolt>().Initialize(Vector2.right); //change knife to fireball so that you can code different behavior for explosions
             }
             else
             {
                 GameObject tmp = (GameObject)Instantiate(boltPrefab, boltPos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-                tmp.GetComponent<Knife>().Initialize(Vector2.left); //change knife to fireball so that you can code different behavior for explosions
+                tmp.GetComponent<Bolt>().Initialize(Vector2.left); //change knife to fireball so that you can code different behavior for explosions
 
             }
         

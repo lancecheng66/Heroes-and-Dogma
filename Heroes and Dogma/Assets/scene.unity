@@ -1095,7 +1095,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212124483523348794, guid: fef1bf248a58c2441a6873de44f518dc,
         type: 2}
@@ -2873,7 +2873,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212124483523348794, guid: fef1bf248a58c2441a6873de44f518dc,
         type: 2}
@@ -3591,6 +3591,8 @@ MonoBehaviour:
   airControl: 1
   jumpForce: 750
   immortalTime: 3
+  AsteroidPos: {fileID: 0}
+  AsteroidPrefab: {fileID: 0}
   boltPos: {fileID: 1604290292}
   boltPrefab: {fileID: 1929211194601406, guid: 718b860ac3792304bbf80830d30d65e9, type: 2}
 --- !u!95 &115966106
@@ -9458,6 +9460,34 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &981372469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 981372470}
+  m_Layer: 8
+  m_Name: AsteroidPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &981372470
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 981372469}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -836, y: 2663, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1428433966}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &982268893
 GameObject:
   m_ObjectHideFlags: 0
@@ -10917,7 +10947,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212124483523348794, guid: fef1bf248a58c2441a6873de44f518dc,
         type: 2}
@@ -11624,6 +11654,8 @@ MonoBehaviour:
   airControl: 1
   jumpForce: 750
   immortalTime: 3
+  AsteroidPos: {fileID: 0}
+  AsteroidPrefab: {fileID: 0}
   boltPos: {fileID: 1892479579}
   boltPrefab: {fileID: 1929211194601406, guid: 718b860ac3792304bbf80830d30d65e9, type: 2}
 --- !u!95 &1408334760
@@ -11734,9 +11766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76a635d59cf4e6c49be83cda74e4b85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knifePos: {fileID: 1474801240}
+  knifePos: {fileID: 981372470}
   movementSpeed: 5
-  knifePrefab: {fileID: 1176317761448196, guid: b31d3d304b7813040894914c467279ab,
+  knifePrefab: {fileID: 1094349565596602, guid: 01a0825017a9c624693acbb8658df64f,
     type: 2}
   healthStat:
     bar: {fileID: 1187659507}
@@ -11757,8 +11789,11 @@ MonoBehaviour:
   airControl: 1
   jumpForce: 750
   immortalTime: 3
+  AsteroidPos: {fileID: 981372470}
+  AsteroidPrefab: {fileID: 1094349565596602, guid: 01a0825017a9c624693acbb8658df64f,
+    type: 2}
   boltPos: {fileID: 1474801240}
-  boltPrefab: {fileID: 1929211194601406, guid: 718b860ac3792304bbf80830d30d65e9, type: 2}
+  boltPrefab: {fileID: 1231874434270268, guid: 40c11c996d68211438e93cbde8c2cf48, type: 2}
 --- !u!95 &1428433962
 Animator:
   serializedVersion: 3

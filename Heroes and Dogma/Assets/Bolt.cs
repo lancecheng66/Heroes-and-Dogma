@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent (typeof(Rigidbody2D))]
-public class Knife : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+public class Bolt: MonoBehaviour
 {
     public float speed;
 
@@ -10,30 +10,32 @@ public class Knife : MonoBehaviour
 
     private Vector2 direction;
 
+    float destroyTime = 0.5f;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-	}
-	
+    }
+
     void FixedUpdate()
     {
         myRigidbody.velocity = direction * speed;
+        
+
     }
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        Destroy(gameObject, destroyTime);
+        
+    }
 
     public void Initialize(Vector2 direction)
     {
         this.direction = direction;
     }
-    void OnBecameInvisible()
-    {
-        Destroy(gameObject);
-    }
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag != "Player")
