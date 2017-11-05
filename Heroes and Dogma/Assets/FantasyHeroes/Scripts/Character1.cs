@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Character1 : MonoBehaviour
 {
-   
+  
     
     [SerializeField]
     protected Transform knifePos;
@@ -71,17 +71,20 @@ public abstract class Character1 : MonoBehaviour
     public virtual void ThrowKnife (int value)
     {
         Physics2D.IgnoreLayerCollision(10, 11);
+        
         if (facingRight)
         {
             GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
             tmp.GetComponent<Knife>().Initialize(Vector2.right);
+        
         }
         else
         {
             GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
             tmp.GetComponent<Knife>().Initialize(Vector2.left);
-
+        
         }
+       
     }
 
     public virtual void MeleeAttack()

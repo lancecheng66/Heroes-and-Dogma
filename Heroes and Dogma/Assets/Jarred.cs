@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Jarred : Control
 {
-   
+    public Vector3 telepoint;
 
     public override void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {
@@ -37,7 +37,27 @@ public class Jarred : Control
         }
 
     }
-   
-   
+    public override void ThrowKnife(int value)
+    {
+        Physics2D.IgnoreLayerCollision(10, 11);
+
+        if (facingRight)
+        {
+            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+            tmp.GetComponent<Knife>().Initialize(Vector2.right);
+            knifePos = tmp.transform;
+        }
+        else
+        {
+            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
+            tmp.GetComponent<Knife>().Initialize(Vector2.left);
+            knifePos = tmp.transform;
+        }
+        
+    }
+    public void Teleport()
+    {
+        transform.position = telepoint;
+    }
 }
 
