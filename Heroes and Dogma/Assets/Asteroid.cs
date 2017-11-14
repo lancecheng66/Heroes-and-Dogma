@@ -12,7 +12,7 @@ public class Asteroid : MonoBehaviour
 
     private Vector2 direction;
 
-    float destroyTime = 7f;
+    float destroyTime = 4f;
 
 
     // Use this for initialization
@@ -20,6 +20,7 @@ public class Asteroid : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myRigidbody.AddTorque(1 * 1 * -100);
+        Physics2D.IgnoreLayerCollision(8, 11);
     }
 
     void FixedUpdate()
