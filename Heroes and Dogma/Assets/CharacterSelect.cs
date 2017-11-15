@@ -17,19 +17,19 @@ public class CharacterSelect : MonoBehaviour
         // turn off their renderer
         foreach (GameObject go in characterList)        
             go.SetActive(false);
-
-        // toggle on the selected index
     }
 
 
     public void Kayla()
     {
         characterList[0].SetActive(true);
+        DontDestroyOnLoad(transform.gameObject);
     }
 
     public void Jarred()
     {
         characterList[1].SetActive(true);
+        DontDestroyOnLoad(transform.gameObject);
     }
 
     public void ConfirmButton()

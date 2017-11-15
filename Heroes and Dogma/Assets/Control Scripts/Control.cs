@@ -5,6 +5,7 @@ using UnityEngine;
 public delegate void DeadEventHandler();
 public class Control : Character1
 {
+    
 
     private static Control instance;
 

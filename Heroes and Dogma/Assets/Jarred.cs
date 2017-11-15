@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Jarred : Control
 {
+    
     public Vector3 telepoint;
 
     public override void HandleInput() // where we put in controls (we can use this to make 2-3 player games
@@ -55,6 +56,9 @@ public class Jarred : Control
         }
         
     }
+
+
+
     public void Teleport()
     {
         transform.position = telepoint;
