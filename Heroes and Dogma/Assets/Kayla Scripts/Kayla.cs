@@ -20,21 +20,21 @@ public class Kayla : Control
 
     public override void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             MyAnimator.SetTrigger("jump");
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.V))
         {
             MyAnimator.SetTrigger("attack");
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             MyAnimator.SetTrigger("slide");
         }
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.H))
         {
             MyAnimator.SetBool("crouch", true);
         }
@@ -43,6 +43,17 @@ public class Kayla : Control
             MyAnimator.SetTrigger("throw");
         }
 
+    }
+
+    public override void FixedUpdate()
+    {
+        if (!TakingDamage && !IsDead)
+        {
+            float horizontal = Input.GetAxis("Horizontal_P2"); // "HORIZONTAL" is the name of a unity feature for movement control. You can see it in Edit>Project Settings>Input.
+            OnGround = IsGrounded();
+            HandleMovement(horizontal);
+            Flip(horizontal);
+        }
     }
 
     public override void ThrowKnife(int value)

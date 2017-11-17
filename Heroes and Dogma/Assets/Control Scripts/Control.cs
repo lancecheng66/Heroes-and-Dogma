@@ -91,7 +91,7 @@ public class Control : Character1
         HandleInput();
     }
     // Update is called once per frame
-    void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         if (!TakingDamage&&!IsDead)
         {
@@ -112,7 +112,7 @@ public class Control : Character1
     }
     //METHODS:
 
-    private void HandleMovement(float horizontal) // The horizontal in the parenthesis gets its value from the float Horizontal = blah blah in the fixed update
+    public void HandleMovement(float horizontal) // The horizontal in the parenthesis gets its value from the float Horizontal = blah blah in the fixed update
     {
        
         if(!Attack && (OnGround||airControl))
@@ -160,7 +160,7 @@ public class Control : Character1
         }
 
     }
-    private void Flip(float horizontal)
+    public void Flip(float horizontal)
     {
         if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
         {
@@ -168,7 +168,7 @@ public class Control : Character1
         }
     }
     
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         if (MyRigidbody.velocity.y <= 0)
         {

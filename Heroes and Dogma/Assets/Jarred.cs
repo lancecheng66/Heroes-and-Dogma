@@ -15,12 +15,12 @@ public class Jarred : Control
             MyAnimator.SetTrigger("jump");
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             MyAnimator.SetTrigger("attack");
         }
 
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             MyAnimator.SetTrigger("slide");
         }
@@ -28,16 +28,27 @@ public class Jarred : Control
         {
             MyAnimator.SetBool("crouch", true);
         }
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             MyAnimator.SetTrigger("throw");
         }
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             MyAnimator.SetTrigger("cast");
         }
 
     }
+    public override void FixedUpdate()
+    {
+        if (!TakingDamage && !IsDead)
+        {
+            float horizontal = Input.GetAxis("Horizontal_P1"); // "HORIZONTAL" is the name of a unity feature for movement control. You can see it in Edit>Project Settings>Input.
+            OnGround = IsGrounded();
+            HandleMovement(horizontal);
+            Flip(horizontal);
+        }
+    }
+
     public override void ThrowKnife(int value)
     {
         Physics2D.IgnoreLayerCollision(10, 11);
