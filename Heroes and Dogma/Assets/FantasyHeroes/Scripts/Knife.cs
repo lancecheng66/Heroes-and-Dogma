@@ -34,13 +34,13 @@ public class Knife : MonoBehaviour
     }
     void OnBecameInvisible()
     {
-        transform.position = telepoint;
+        //transform.position = telepoint;
         Destroy(gameObject);
     }
     public void OnTriggerEnter2D(Collider2D other)
     {
 
-        transform.position = telepoint;
+        //transform.position = telepoint;
         if (other.gameObject.tag != "Player")
         { Destroy(gameObject); }
     }

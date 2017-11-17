@@ -414,7 +414,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalScale.x
@@ -2093,7 +2093,7 @@ MonoBehaviour:
   knifePrefab: {fileID: 1315436550531168, guid: cf60a70f168cfff46b3164e8ed3229df,
     type: 2}
   healthStat:
-    bar: {fileID: 0}
+    bar: {fileID: 114745583815404552, guid: 1e5caa68ddef72a4996f1c0f6e2966f6, type: 2}
     maxVal: 100
     currentVal: 100
   swordCollider: {fileID: 1444670354}
@@ -2149,7 +2149,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalScale.x
@@ -4631,8 +4631,8 @@ Transform:
   m_LocalPosition: {x: 299.9949, y: 182.87894, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 115966104}
   - {fileID: 1428433966}
+  - {fileID: 115966104}
   - {fileID: 1408334758}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -6250,7 +6250,7 @@ MonoBehaviour:
   knifePrefab: {fileID: 1176317761448196, guid: b31d3d304b7813040894914c467279ab,
     type: 2}
   healthStat:
-    bar: {fileID: 0}
+    bar: {fileID: 114745583815404552, guid: 1e5caa68ddef72a4996f1c0f6e2966f6, type: 2}
     maxVal: 100
     currentVal: 100
   swordCollider: {fileID: 14690300}
@@ -6385,7 +6385,7 @@ MonoBehaviour:
   knifePrefab: {fileID: 1707342571495148, guid: f763638b629eb5147822880754050879,
     type: 2}
   healthStat:
-    bar: {fileID: 0}
+    bar: {fileID: 114745583815404552, guid: 1e5caa68ddef72a4996f1c0f6e2966f6, type: 2}
     maxVal: 100
     currentVal: 100
   swordCollider: {fileID: 494654691}
