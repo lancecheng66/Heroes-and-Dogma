@@ -8,35 +8,38 @@ public class Jarred : Control
     GameObject tmp;
     public Vector3 telepoint;
 
+
+
     public override void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetButtonDown("Jump_P1"))
         {
             MyAnimator.SetTrigger("jump");
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetButton("Crouch_P1"))
+        {
+            MyAnimator.SetBool("crouch", true);
+        }
+
+        if (Input.GetButtonDown("Attack_P1"))
         {
             MyAnimator.SetTrigger("attack");
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            MyAnimator.SetTrigger("slide");
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            MyAnimator.SetBool("crouch", true);
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetButtonDown("Skill1_P1"))
         {
             MyAnimator.SetTrigger("throw");
         }
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetButtonDown("Skill2_P1"))
         {
             MyAnimator.SetTrigger("cast");
         }
 
+        if (Input.GetButtonDown("Skill3_P1"))
+        {
+            MyAnimator.SetTrigger("slide");
+        }
     }
     public override void FixedUpdate()
     {
@@ -63,7 +66,7 @@ public class Jarred : Control
             tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
             tmp.GetComponent<Knife>().Initialize(Vector2.left);
         }
-        
+
     }
 
 
@@ -74,4 +77,5 @@ public class Jarred : Control
         Destroy(tmp);
     }
 }
+
 

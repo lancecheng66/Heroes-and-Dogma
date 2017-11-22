@@ -20,27 +20,33 @@ public class Kayla : Control
 
     public override void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {
-        if (Input.GetKeyDown(KeyCode.Y))
+        if (Input.GetButtonDown("Jump_P2"))
         {
             MyAnimator.SetTrigger("jump");
         }
 
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetButton("Crouch_P2"))
+        {
+            MyAnimator.SetBool("crouch", true);
+        }
+
+        if (Input.GetButtonDown("Attack_P2"))
         {
             MyAnimator.SetTrigger("attack");
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            MyAnimator.SetTrigger("slide");
-        }
-        if (Input.GetKey(KeyCode.H))
-        {
-            MyAnimator.SetBool("crouch", true);
-        }
-        if (Input.GetKeyDown(KeyCode.N))
+        if (Input.GetButtonDown("Skill1_P2"))
         {
             MyAnimator.SetTrigger("throw");
+        }
+        if (Input.GetButtonDown("Skill2_P2"))
+        {
+            MyAnimator.SetTrigger("cast");
+        }
+
+        if (Input.GetButtonDown("Skill3_P2"))
+        {
+            MyAnimator.SetTrigger("slide");
         }
 
     }
