@@ -7,9 +7,11 @@ public class Control : Character1
 {
     
 
-    private static Control instance;
+    
 
     public event DeadEventHandler Dead;
+
+    private static Control instance;
 
     public static Control Instance
     {
@@ -17,7 +19,7 @@ public class Control : Character1
         {
             if (instance == null)
             {
-                instance = GameObject.FindObjectOfType<Control>();
+                instance = GameObject.FindObjectOfType<Kayla>();
             }
         return instance;
         }

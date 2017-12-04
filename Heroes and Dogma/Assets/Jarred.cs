@@ -8,7 +8,7 @@ public class Jarred : Control
     GameObject tmp;
     public Vector3 telepoint;
 
-
+   
 
     public override void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {

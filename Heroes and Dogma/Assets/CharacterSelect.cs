@@ -32,6 +32,11 @@ public class CharacterSelect : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
     }
 
+    public void Sven()
+    {
+        characterList[2].SetActive(true);
+        DontDestroyOnLoad(transform.gameObject);
+    }
     public void ConfirmButton()
     {
         SceneManager.LoadScene("Stage 1");
