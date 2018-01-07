@@ -34,7 +34,7 @@ public class IdleState : IEnemyState
     {
         if (other.tag =="PlayerProjectile")
         {
-            enemy.Target = Control.Instance.gameObject;
+            enemy.Target = GameObject.FindWithTag("Player");
         }
     }
     private void Idle()

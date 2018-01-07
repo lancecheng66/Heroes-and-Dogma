@@ -6,7 +6,7 @@ public class CrouchBehavior : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Control.Instance.Crouch = true;
+        animator.gameObject.GetComponent<Control>().Crouch = true;
 
         
     }
@@ -20,7 +20,7 @@ public class CrouchBehavior : StateMachineBehaviour {
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Control.Instance.Crouch = false;
+        animator.gameObject.GetComponent<Control>().Crouch = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

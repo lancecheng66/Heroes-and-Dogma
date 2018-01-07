@@ -67,8 +67,9 @@ public class Enemy : Character1
     // Use this for initialization
     public override void Start()
     {
+
         base.Start();
-        Control.Instance.Dead += new DeadEventHandler(RemoveTarget);
+        //gameObject.GetComponent<Control>().Dead += new DeadEventHandler(RemoveTarget);
         ChangeState(new IdleState());
         // Physics2D.IgnoreLayerCollision(9,9); Keeps enemies from colliding with each other
         healthCanvas = transform.GetComponentInChildren<Canvas>();

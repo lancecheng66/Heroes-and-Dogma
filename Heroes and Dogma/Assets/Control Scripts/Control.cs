@@ -11,24 +11,6 @@ public class Control : Character1
 
     public event DeadEventHandler Dead;
 
-    private static Control instance;
-
-    public static Control Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = GameObject.FindObjectOfType<Kayla>();
-            }
-        return instance;
-        }
-    }
-
-   
-   
-    
-
     public Transform[] groundPoints; //points on the characters shoes for him to know if he is standing on solid ground
     public float groundRadius;
   
