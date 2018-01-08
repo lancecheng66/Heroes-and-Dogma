@@ -73,7 +73,7 @@ public class Sven : Control
         else
         {
             GameObject tmp = (GameObject)Instantiate(AsteroidPrefab, AsteroidPos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-            tmp.GetComponent<Asteroid>().Initialize(Vector2.left);
+            tmp.GetComponent<Divinelight>().Initialize(Vector2.left);
 
         }
     }

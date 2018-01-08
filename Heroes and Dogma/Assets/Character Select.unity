@@ -439,11 +439,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4857010035129676, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -9.991112
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 4638287210593666, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -13.321482
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2107,10 +2107,10 @@ MonoBehaviour:
   groundRadius: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   airControl: 1
   jumpForce: 1000
-  immortalTime: 3
+  immortalTime: 1
   telepoint: {x: 0, y: 0, z: 0}
 --- !u!1001 &168698839
 Prefab:
@@ -4704,11 +4704,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4857010035129676, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -9.991112
+      value: 2.6562529
       objectReference: {fileID: 0}
     - target: {fileID: 4638287210593666, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -13.321482
+      value: 7.968752
       objectReference: {fileID: 0}
     - target: {fileID: 4701540085545158, guid: fef1bf248a58c2441a6873de44f518dc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6347,23 +6347,24 @@ MonoBehaviour:
   knifePrefab: {fileID: 1176317761448196, guid: b31d3d304b7813040894914c467279ab,
     type: 2}
   healthStat:
-    bar: {fileID: 0}
-    maxVal: 0
-    currentVal: 0
+    bar: {fileID: 114745583815404552, guid: 1e5caa68ddef72a4996f1c0f6e2966f6, type: 2}
+    maxVal: 100
+    currentVal: 100
   swordCollider: {fileID: 1444670354}
-  damageSources: []
-  groundPoints: []
-  groundRadius: 0
+  damageSources:
+  - EnemyProjectile
+  - EnemySword
+  groundPoints:
+  - {fileID: 602637676}
+  - {fileID: 707110110}
+  - {fileID: 1494559029}
+  groundRadius: 3
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 0
-  airControl: 0
-  jumpForce: 0
-  immortalTime: 0
-  AsteroidPos: {fileID: 0}
-  AsteroidPrefab: {fileID: 0}
-  boltPos: {fileID: 0}
-  boltPrefab: {fileID: 0}
+    m_Bits: 1
+  airControl: 1
+  jumpForce: 750
+  immortalTime: 1.5
 --- !u!1 &1428433960 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc,
@@ -6399,10 +6400,10 @@ MonoBehaviour:
   groundRadius: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1
   airControl: 1
   jumpForce: 750
-  immortalTime: 3
+  immortalTime: 1
   AsteroidPos: {fileID: 981372470}
   AsteroidPrefab: {fileID: 1707342571495148, guid: f763638b629eb5147822880754050879,
     type: 2}

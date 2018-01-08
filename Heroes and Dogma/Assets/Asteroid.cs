@@ -20,7 +20,7 @@ public class Asteroid : MonoBehaviour
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myRigidbody.AddTorque(1 * 1 * -100);
-        Physics2D.IgnoreLayerCollision(8, 11);
+        //Physics2D.IgnoreLayerCollision(8, 11);
     }
 
     void FixedUpdate()
