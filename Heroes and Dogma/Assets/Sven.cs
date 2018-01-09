@@ -73,27 +73,11 @@ public class Sven : Control
         else
         {
             GameObject tmp = (GameObject)Instantiate(AsteroidPrefab, AsteroidPos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-            tmp.GetComponent<Divinelight>().Initialize(Vector2.left);
+            tmp.GetComponent<Asteroid>().Initialize(Vector2.left);
 
         }
     }
 
-    public override void MeleeAttack()
-    {
-        Physics2D.IgnoreLayerCollision(10, 11);
-
-        if (facingRight)
-        {
-            GameObject tmp = (GameObject)Instantiate(boltPrefab, boltPos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-            tmp.GetComponent<Bolt>().Initialize(Vector2.right); //change knife to fireball so that you can code different behavior for explosions
-        }
-        else
-        {
-            GameObject tmp = (GameObject)Instantiate(boltPrefab, boltPos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-            tmp.GetComponent<Bolt>().Initialize(Vector2.left); //change knife to fireball so that you can code different behavior for explosions
-
-        }
-
-    }
+    
 }
 
