@@ -5,17 +5,12 @@ using UnityEngine;
 
 public class Sven : Control
 {
+  
     [SerializeField]
-    protected Transform AsteroidPos;
+    protected Transform ShieldPos;
 
     [SerializeField]
-    public GameObject AsteroidPrefab;
-
-    [SerializeField]
-    protected Transform boltPos;
-
-    [SerializeField]
-    public GameObject boltPrefab;
+    public GameObject ShieldPrefab;
 
 
     public override void HandleInput() // where we put in controls (we can use this to make 2-3 player games
@@ -66,16 +61,16 @@ public class Sven : Control
     {
         Physics2D.IgnoreLayerCollision(10, 11);
         if (facingRight)
-        {
-            GameObject tmp = (GameObject)Instantiate(AsteroidPrefab, AsteroidPos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
-            tmp.GetComponent<Asteroid>().Initialize(Vector2.right);
-        }
-        else
-        {
-            GameObject tmp = (GameObject)Instantiate(AsteroidPrefab, AsteroidPos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
-            tmp.GetComponent<Asteroid>().Initialize(Vector2.left);
+            {
+                GameObject tmp = (GameObject)Instantiate(ShieldPrefab, ShieldPos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+                tmp.GetComponent<ShieldBoomerang>().Initialize(Vector2.right); 
+            }
+            else
+            {
+                GameObject tmp = (GameObject)Instantiate(ShieldPrefab, ShieldPos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
+                tmp.GetComponent<ShieldBoomerang>().Initialize(Vector2.left); 
 
-        }
+            }
     }
 
     

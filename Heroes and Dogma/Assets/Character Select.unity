@@ -8057,10 +8057,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b3ce1bdc9c2dd84e945141ad4417875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knifePos: {fileID: 1892479579}
+  knifePos: {fileID: 0}
   movementSpeed: 5
-  knifePrefab: {fileID: 1074854851697590, guid: c6ec01329330d7f4e81f0257e1efb927,
-    type: 2}
+  knifePrefab: {fileID: 0}
   healthStat:
     bar: {fileID: 114745583815404552, guid: 1e5caa68ddef72a4996f1c0f6e2966f6, type: 2}
     maxVal: 100
@@ -8080,10 +8079,9 @@ MonoBehaviour:
   airControl: 1
   jumpForce: 750
   immortalTime: 1.5
-  AsteroidPos: {fileID: 0}
-  AsteroidPrefab: {fileID: 0}
-  boltPos: {fileID: 0}
-  boltPrefab: {fileID: 0}
+  ShieldPos: {fileID: 1892479579}
+  ShieldPrefab: {fileID: 1377329182643778, guid: fb16c49688a25084398b3b5cdc9d1375,
+    type: 2}
 --- !u!1 &1428433960 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1768183185748686, guid: fef1bf248a58c2441a6873de44f518dc,
@@ -10328,7 +10326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1892479579}
   m_Layer: 10
-  m_Name: KnifePos
+  m_Name: ShieldPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10341,7 +10339,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1892479578}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 53, y: 89, z: 0}
+  m_LocalPosition: {x: 53, y: 64, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1408334758}

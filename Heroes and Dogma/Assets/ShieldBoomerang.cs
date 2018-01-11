@@ -39,6 +39,12 @@ public class ShieldBoomerang : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag != "Player")
-            Destroy(gameObject);
+            Comeback();
+    }
+
+    private void Comeback()
+    {
+        myRigidbody.velocity = direction * -1 * speed;
+        Debug.Log("coming back");
     }
 }
