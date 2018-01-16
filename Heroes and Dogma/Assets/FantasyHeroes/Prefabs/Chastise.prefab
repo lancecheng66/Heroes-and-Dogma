@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212659523709438264}
   - component: {fileID: 50327667130122632}
   - component: {fileID: 58042783235123294}
-  - component: {fileID: 114275005553048196}
+  - component: {fileID: 114317714844310366}
   m_Layer: 11
-  m_Name: ShieldBoomerang
+  m_Name: Chastise
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,8 +108,8 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.64
---- !u!114 &114275005553048196
+  m_Radius: 1.5
+--- !u!114 &114317714844310366
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -117,10 +117,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1074854851697590}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05607eea306cc6b4cb10599d62331ccb, type: 3}
+  m_Script: {fileID: 11500000, guid: b868718fbf3dfed41a7794e6cac8aa9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  speed: 15
 --- !u!198 &198545470796561064
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -131,10 +131,10 @@ ParticleSystem:
   lengthInSec: 0.1
   simulationSpeed: 1
   looping: 1
-  prewarm: 1
+  prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
-  autoRandomSeed: 0
+  autoRandomSeed: 1
   useRigidbodyForVelocity: 1
   startDelay:
     serializedVersion: 2
@@ -269,8 +269,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0.10588236, b: 0, a: 1}
-      maxColor: {r: 1, g: 0.427451, b: 0, a: 1}
+      minColor: {r: 1, g: 0.918, b: 0, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.47586206, b: 0, a: 1}
@@ -332,7 +332,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -576,7 +576,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 200
     size3D: 0
     rotation3D: 0
     gravityModifier:
@@ -3472,7 +3472,7 @@ SpriteRenderer:
   m_SortingLayerID: -2092607415
   m_SortingLayer: 5
   m_SortingOrder: 99
-  m_Sprite: {fileID: 21300000, guid: debab5b19126fc94ea7314220e796a38, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3480,5 +3480,5 @@ SpriteRenderer:
   m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0

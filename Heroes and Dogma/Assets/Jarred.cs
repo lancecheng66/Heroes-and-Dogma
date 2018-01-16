@@ -71,7 +71,7 @@ public class Jarred : Control
 
 
 
-    public void Teleport()
+    public void Skill2()
     {
         transform.position = tmp.transform.position;
         Destroy(tmp);

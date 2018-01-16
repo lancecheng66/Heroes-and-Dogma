@@ -12,6 +12,11 @@ public class Sven : Control
     [SerializeField]
     public GameObject ShieldPrefab;
 
+    [SerializeField]
+    protected Transform ChastisePos;
+
+    [SerializeField]
+    public GameObject ChastisePrefab;
 
     public override void HandleInput() // where we put in controls (we can use this to make 2-3 player games
     {
@@ -54,6 +59,7 @@ public class Sven : Control
             OnGround = IsGrounded();
             HandleMovement(horizontal);
             Flip(horizontal);
+            Physics2D.IgnoreLayerCollision(10, 11);
         }
     }
 
@@ -73,6 +79,20 @@ public class Sven : Control
             }
     }
 
-    
+    public void Skill2()
+    {
+        Physics2D.IgnoreLayerCollision(10, 11);
+        if (facingRight)
+        {
+            GameObject tmp = (GameObject)Instantiate(ChastisePrefab, ChastisePos.position, Quaternion.Euler(new Vector3(0, 0, -90)));
+            tmp.GetComponent<Chastise>().Initialize(Vector2.down);
+        }
+        else
+        {
+            GameObject tmp = (GameObject)Instantiate(ChastisePrefab, ChastisePos.position, Quaternion.Euler(new Vector3(0, 0, 90)));
+            tmp.GetComponent<Chastise>().Initialize(Vector2.down);
+
+        }
+    }
 }
 

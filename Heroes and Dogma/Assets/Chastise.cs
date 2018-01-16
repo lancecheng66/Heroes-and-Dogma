@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
-public class Bolt: MonoBehaviour
+public class Chastise : MonoBehaviour
 {
     public float speed;
 
@@ -10,7 +10,7 @@ public class Bolt: MonoBehaviour
 
     private Vector2 direction;
 
-    float destroyTime = 0.5f;
+    float destroyTime = 1.5f;
 
     // Use this for initialization
     void Start()
@@ -26,7 +26,7 @@ public class Bolt: MonoBehaviour
     void Update()
     {
         Destroy(gameObject, destroyTime);
-        
+
     }
 
     public void Initialize(Vector2 direction)
@@ -36,7 +36,6 @@ public class Bolt: MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag != "Player")
-            Destroy(gameObject);
+       
     }
 }
