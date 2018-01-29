@@ -5,9 +5,10 @@ using UnityEngine;
 public delegate void DeadEventHandler();
 public class Control : Character1
 {
-    
 
-    
+
+
+    public GameObject currentCheckpoint;
 
     public event DeadEventHandler Dead;
 
@@ -69,7 +70,7 @@ public class Control : Character1
 
             if (transform.position.y <= -14f)
             {
-                Death();
+                Respawn();
             }
         }
         HandleInput();
@@ -216,12 +217,12 @@ public class Control : Character1
         }
     }
 
-    public override void Death()
+    public override void Respawn()
     {
         MyRigidbody.velocity = Vector2.zero;
         MyAnimator.SetTrigger("idle");
         healthStat.CurrentValue = healthStat.MaxVal;
-        transform.position = startPos;
+        transform.position = currentCheckpoint.transform.position;
     }
 }
 

@@ -178,7 +178,7 @@ public class Enemy : Character1
         }
     }
 
-    public override void Death()
+    public override void Respawn()
     {
 
         healthStat.CurrentValue = healthStat.MaxVal;
